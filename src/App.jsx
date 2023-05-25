@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
-import { Header } from './components/Layouts/Header/Header';
+import { SharedLayout } from './components/Layouts';
 
 import './App.css';
 
@@ -15,7 +15,7 @@ export const App = () => {
   return (
     <>
       <Routes>
-        <Route path="/" element={<Header />}>
+        <Route path="/" element={<SharedLayout />}>
           <Route index element={<HomePage />} />
           <Route path="cart" element={<CartPage />} />
           <Route path="history" element={<HistoryPage />} />

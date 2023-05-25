@@ -6,3 +6,7 @@
   display: flex;
   gap: 30px;
 }
+
+.active {
+  color: red;
+}

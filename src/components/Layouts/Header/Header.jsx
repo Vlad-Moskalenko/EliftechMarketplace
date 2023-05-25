@@ -8,22 +8,22 @@ export const Header = () => {
       <nav>
         <ul className={s.navList}>
           <li>
-            <NavLink to="/" className={({ isActive }) => (isActive ? 'active' : '')}>
+            <NavLink to="/" className={({ isActive }) => (isActive ? `${s.active}` : '')}>
               Shop
             </NavLink>
           </li>
           <li>
-            <NavLink to="/cart" className={({ isActive }) => (isActive ? 'active' : '')}>
+            <NavLink to="/cart" className={({ isActive }) => (isActive ? `${s.active}` : '')}>
               Cart
             </NavLink>
           </li>
           <li>
-            <NavLink to="/history" className={({ isActive }) => (isActive ? 'active' : '')}>
+            <NavLink to="/history" className={({ isActive }) => (isActive ? `${s.active}` : '')}>
               History
             </NavLink>
           </li>
           <li>
-            <NavLink to="/coupons" className={({ isActive }) => (isActive ? 'active' : '')}>
+            <NavLink to="/coupons" className={({ isActive }) => (isActive ? `${s.active}` : '')}>
               Coupons
             </NavLink>
           </li>
