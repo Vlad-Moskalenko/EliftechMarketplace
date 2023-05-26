@@ -1,14 +1,15 @@
 import { useSelector } from 'react-redux';
-import { selectCart } from '../../../redux/cart/selectors';
 import { CartItem } from '../CartItem/CartItem';
+import { selectCart } from 'src/redux/cart/selectors';
 
 import s from './CartList.module.scss';
 
 export const CartList = () => {
-  const products = useSelector(selectCart);
+  const cartProducts = useSelector(selectCart);
+
   return (
     <ul className={s.list}>
-      {products.map(product => (
+      {cartProducts.map(product => (
         <CartItem key={product._id} product={product} />
       ))}
     </ul>

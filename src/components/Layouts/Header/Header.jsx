@@ -9,7 +9,7 @@ export const Header = () => {
         <ul className={s.navList}>
           <li>
             <NavLink to="/" className={({ isActive }) => (isActive ? `${s.active}` : '')}>
-              Shop
+              Marketplace
             </NavLink>
           </li>
           <li>
@@ -19,7 +19,7 @@ export const Header = () => {
           </li>
           <li>
             <NavLink to="/history" className={({ isActive }) => (isActive ? `${s.active}` : '')}>
-              History
+              Order History
             </NavLink>
           </li>
           <li>

@@ -1,15 +1,5 @@
-import { CartList } from '../../components/Cart';
-import { OrderDeliveryForm } from '../../components/Forms';
+import { CartPageComponent } from 'src/components/Cart/CartPageComponent';
 
-import s from './CartPage.module.scss';
-
-const CartPage = () => {
-  return (
-    <main className={s.main}>
-      <OrderDeliveryForm />
-      <CartList />
-    </main>
-  );
-};
+const CartPage = () => <CartPageComponent />;
 
 export default CartPage;

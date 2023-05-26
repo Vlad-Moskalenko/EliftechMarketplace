@@ -1,4 +1,4 @@
-import { MarketplacePageComponent } from '../../components/Marketplace/MarketplacePageComponent';
+import { MarketplacePageComponent } from 'src/components/Marketplace/MarketplacePageComponent';
 
 const MarketplacePage = () => <MarketplacePageComponent />;
 

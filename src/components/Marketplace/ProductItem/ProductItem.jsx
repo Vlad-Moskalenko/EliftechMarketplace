@@ -16,7 +16,7 @@ export const ProductItem = ({ product }) => {
     const chosenMarket = cart.length > 0 && cart[0].market;
 
     if (chosenMarket === product.market || cart.length === 0) {
-      dispatch(addProduct(product));
+      dispatch(addProduct({ ...product, amount: 1 }));
     } else {
       const res = confirm(
         `Sorry, but you couldn't add product from this market, because you already choose ${chosenMarket}. If you still want to add product from ${product.market}, you need to clear your cart. Do you want to clear your cart and add ${product.title} from ${product.market}?`
@@ -24,7 +24,7 @@ export const ProductItem = ({ product }) => {
 
       if (res) {
         dispatch(clearCart());
-        dispatch(addProduct(product));
+        dispatch(addProduct({ ...product, amount: 1 }));
       }
     }
   };
