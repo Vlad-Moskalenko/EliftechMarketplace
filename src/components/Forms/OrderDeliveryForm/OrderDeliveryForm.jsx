@@ -38,7 +38,7 @@ export const OrderDeliveryForm = () => {
 
   const { email, address, name, phone } = deliveryData;
   return (
-    <form className={s.form}>
+    <form onSubmit={handleOrderSubmit} className={s.form}>
       <label className={s.label}>
         E-mail
         <input
@@ -83,9 +83,7 @@ export const OrderDeliveryForm = () => {
           required
         />
       </label>
-      <button onClick={handleOrderSubmit} type="submit">
-        Submit
-      </button>
+      <button type="submit">Submit</button>
     </form>
   );
 };

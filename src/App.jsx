@@ -8,7 +8,7 @@ import './App.css';
 
 const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
 const CartPage = lazy(() => import('./pages/CartPage/CartPage'));
-const HistoryPage = lazy(() => import('./pages/HistoryPage/HistoryPage'));
+const OrderHistoryPage = lazy(() => import('./pages/OrderHistoryPage/OrderHistoryPage'));
 const CouponsPage = lazy(() => import('./pages/CouponsPage/CouponsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
@@ -21,7 +21,7 @@ export const App = () => {
             <Route path="/:market" element={<ProductsList />} />
           </Route>
           <Route path="/cart" element={<CartPage />} />
-          <Route path="/history" element={<HistoryPage />} />
+          <Route path="/history" element={<OrderHistoryPage />} />
           <Route path="/coupon" element={<CouponsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
