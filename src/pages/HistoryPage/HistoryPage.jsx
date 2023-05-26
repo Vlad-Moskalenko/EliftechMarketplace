@@ -1,5 +1,11 @@
+import { OrderHistoryForm } from '../../components/Forms';
+
 const HistoryPage = () => {
-  return <div></div>;
+  return (
+    <main>
+      <OrderHistoryForm />
+    </main>
+  );
 };
 
 export default HistoryPage;
