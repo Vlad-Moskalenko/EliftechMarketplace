@@ -2,11 +2,11 @@ import { Routes, Route } from 'react-router-dom';
 import { lazy } from 'react';
 
 import { SharedLayout } from './components/Layouts';
-import { ProductsList } from './components/Marketplace';
+import { ProductsList } from './components/Marketplace/ProductsList/ProductsList';
 
 import './App.css';
 
-const HomePage = lazy(() => import('./pages/HomePage/HomePage'));
+const MarketplacePage = lazy(() => import('./pages/MarketplacePage/MarketplacePage'));
 const CartPage = lazy(() => import('./pages/CartPage/CartPage'));
 const OrderHistoryPage = lazy(() => import('./pages/OrderHistoryPage/OrderHistoryPage'));
 const CouponsPage = lazy(() => import('./pages/CouponsPage/CouponsPage'));
@@ -17,7 +17,7 @@ export const App = () => {
     <>
       <Routes>
         <Route path="/" element={<SharedLayout />}>
-          <Route path="/" element={<HomePage />}>
+          <Route path="/" element={<MarketplacePage />}>
             <Route path="/:market" element={<ProductsList />} />
           </Route>
           <Route path="/cart" element={<CartPage />} />

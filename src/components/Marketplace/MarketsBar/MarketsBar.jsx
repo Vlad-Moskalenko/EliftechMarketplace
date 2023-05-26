@@ -1,13 +1,13 @@
 import { NavLink } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import { marketApi } from '../../../services/axiosConfig';
+import { getMarkets } from 'src/services/fetchMarkets';
 
 export const MarketsBar = () => {
   const [markets, setMarkets] = useState([]);
 
   useEffect(() => {
-    marketApi.get('/products/markets').then(({ data }) => setMarkets(data));
+    getMarkets().then(data => setMarkets(data));
   }, []);
 
   return (
@@ -15,7 +15,9 @@ export const MarketsBar = () => {
       <ul>
         {markets.map((market, index) => (
           <li key={index}>
-            <NavLink to={market}>{market}</NavLink>
+            <NavLink className={({ isActive }) => (isActive ? 'active' : '')} to={market}>
+              {market}
+            </NavLink>
           </li>
         ))}
       </ul>
