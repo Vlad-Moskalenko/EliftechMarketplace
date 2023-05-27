@@ -1,0 +1,15 @@
+.sideBar {
+  padding: 20px 30px;
+  min-width: 10vw;
+
+  box-shadow: rgba(136, 165, 191, 0.48) 6px 2px 16px 0px, rgba(255, 255, 255, 0.8) -6px -2px 16px 0px;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  font-size: 18px;
+  text-align: left;
+}

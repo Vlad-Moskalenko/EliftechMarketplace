@@ -1,12 +1,19 @@
 .header {
-  padding: 20px 15px;
+  padding: 20px 32px;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+
+  background-color: #fff;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .navList {
   display: flex;
   gap: 30px;
-}
 
-.active {
-  color: red;
+  font-size: 20px;
 }

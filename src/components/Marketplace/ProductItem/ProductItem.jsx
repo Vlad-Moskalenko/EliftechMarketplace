@@ -31,24 +31,28 @@ export const ProductItem = ({ product }) => {
 
   const isAlreadyBought = () => cart.find(item => item._id === product._id);
 
-  const { price, title, imgUrl, rating, descr, market: productMarket } = product;
+  const { price, title, imgUrl, market: productMarket } = product;
 
   return (
     <li className={s.item}>
       <article className={s.card}>
-        <h2>{title}</h2>
-        <p>{descr}</p>
-        <p>Price: {price}</p>
-        <p>Rating: {rating}</p>
-        {!market && <p>{productMarket}</p>}
+        <img src={imgUrl} alt={title} />
+        <h2 className={s.title}>
+          {title} <span className={s.price}>{price}$</span>
+        </h2>
+        {!market && <p className={s.marketTitle}>{productMarket}</p>}
+      </article>
+      <div className={s.buyer}>
         {isAlreadyBought() ? (
-          <NavLink to="/cart">Go to cart</NavLink>
+          <NavLink to="/cart" className={({ isActive }) => (isActive ? 'active' : `${s.link}`)}>
+            Go to cart
+          </NavLink>
         ) : (
-          <button onClick={handleBuyClick} type="button">
-            Buy
+          <button className="button" onClick={handleBuyClick} type="button">
+            Add to cart
           </button>
         )}
-      </article>
+      </div>
     </li>
   );
 };

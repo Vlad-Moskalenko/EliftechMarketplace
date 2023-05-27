@@ -4,12 +4,9 @@ import { lazy } from 'react';
 import { SharedLayout } from './components/Layouts';
 import { ProductsList } from './components/Marketplace/ProductsList/ProductsList';
 
-import './App.css';
-
 const MarketplacePage = lazy(() => import('./pages/MarketplacePage/MarketplacePage'));
 const CartPage = lazy(() => import('./pages/CartPage/CartPage'));
 const OrderHistoryPage = lazy(() => import('./pages/OrderHistoryPage/OrderHistoryPage'));
-const CouponsPage = lazy(() => import('./pages/CouponsPage/CouponsPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage/NotFoundPage'));
 
 export const App = () => {
@@ -22,7 +19,6 @@ export const App = () => {
           </Route>
           <Route path="/cart" element={<CartPage />} />
           <Route path="/history" element={<OrderHistoryPage />} />
-          <Route path="/coupon" element={<CouponsPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

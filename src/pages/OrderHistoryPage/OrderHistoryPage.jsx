@@ -1,4 +1,4 @@
-import { OrderHistoryPageComponent } from '../../components/OrderHistory/OrderHistoryPageComponent';
+import { OrderHistoryPageComponent } from 'src/components/OrderHistory/OrderHistoryPageComponent';
 
 const OrderHistoryPage = () => <OrderHistoryPageComponent />;
 

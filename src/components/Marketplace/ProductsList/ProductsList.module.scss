@@ -1,6 +1,13 @@
 .list {
-  width: 100%;
+  margin: 0  auto;
+  padding: 15px;
+
+  max-width: 1220px;
+  min-height: calc(100vh - 100px);
+
   display: flex;
-  gap: 20px;
   flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+  gap: 20px;
 }
