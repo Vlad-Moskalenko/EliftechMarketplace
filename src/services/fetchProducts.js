@@ -1,21 +1,13 @@
 import { marketApi } from './axiosConfig';
 
 export const getMarketProducts = async market => {
-  try {
-    const { data } = await marketApi.get(`/products/${market}`);
+  const { data } = await marketApi.get(`/products/${market}`);
 
-    return data;
-  } catch (err) {
-    console.log(err.message);
-  }
+  return data;
 };
 
 export const getAllProducts = async () => {
-  try {
-    const { data } = await marketApi.get(`/products`);
+  const { data } = await marketApi.get(`/products`);
 
-    return data;
-  } catch (err) {
-    console.log(err.message);
-  }
+  return data;
 };

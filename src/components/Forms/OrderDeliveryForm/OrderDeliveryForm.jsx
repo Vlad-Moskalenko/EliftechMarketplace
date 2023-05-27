@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useFormik } from 'formik';
+import { toast } from 'react-toastify';
 
 import { clearCart } from 'src/redux/cart/cartSlice';
 import { selectCart } from 'src/redux/cart/selectors';
@@ -18,6 +19,7 @@ const initialValues = {
 export const OrderDeliveryForm = () => {
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
+  const order = cart.map(item => ({ _id: item._id, amount: item.amount }));
 
   const orderDeliveryFormik = useFormik({
     initialValues,
@@ -26,11 +28,15 @@ export const OrderDeliveryForm = () => {
 
     onSubmit: async (values, actions) => {
       if (cart.length > 0) {
-        await addOrderDelivery({ ...values, order: cart });
+        try {
+          await addOrderDelivery({ ...values, order });
 
-        actions.resetForm();
-        dispatch(clearCart());
-        alert('Thank you! Wait for your order');
+          actions.resetForm();
+          dispatch(clearCart());
+          toast.success('Thank you! Wait for your order');
+        } catch (err) {
+          toast.error(err.message);
+        }
       }
     },
   });
