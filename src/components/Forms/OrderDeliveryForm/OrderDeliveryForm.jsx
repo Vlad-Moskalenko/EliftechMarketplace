@@ -30,6 +30,7 @@ export const OrderDeliveryForm = () => {
 
         actions.resetForm();
         dispatch(clearCart());
+        alert('Thank you! Wait for your order');
       }
     },
   });

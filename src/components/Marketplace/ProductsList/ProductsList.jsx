@@ -6,6 +6,7 @@ import { ProductItem } from '../ProductItem/ProductItem';
 import { getMarketProducts, getAllProducts } from 'src/services/fetchProducts';
 
 import s from './ProductsList.module.scss';
+import { Spinner } from '../../../ui-kit/Spinner/Spinner';
 
 export const ProductsList = () => {
   const { market } = useParams();
@@ -20,10 +21,16 @@ export const ProductsList = () => {
   }, [market]);
 
   return (
-    <ul className={s.list}>
-      {products.map(product => (
-        <ProductItem product={product} key={product._id} />
-      ))}
-    </ul>
+    <>
+      {products.length === 0 ? (
+        <Spinner />
+      ) : (
+        <ul className={s.list}>
+          {products.map(product => (
+            <ProductItem product={product} key={product._id} />
+          ))}
+        </ul>
+      )}
+    </>
   );
 };

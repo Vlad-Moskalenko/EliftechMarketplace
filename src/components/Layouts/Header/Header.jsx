@@ -22,11 +22,6 @@ export const Header = () => {
               Cart <span className={s.cart}>{cart.length > 0 && cart.length}</span>
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/history" className={({ isActive }) => (isActive ? 'active' : 'link')}>
-              Order History
-            </NavLink>
-          </li>
         </ul>
       </nav>
       {cart.length > 0 && <span className={s.totalPrice}>Total price: {totalPrice(cart)}$</span>}
