@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
@@ -12,7 +13,13 @@ export const MarketplacePageComponent = () => {
   return (
     <main className={s.main}>
       <MarketsBar />
-      {market ? <Outlet /> : <ProductsList />}
+      {market ? (
+        <Suspense fallback="Loading...">
+          <Outlet />
+        </Suspense>
+      ) : (
+        <ProductsList />
+      )}
     </main>
   );
 };

@@ -5,7 +5,7 @@ export const CartItem = ({ product: { _id, amount, title, price, market } }) => 
   const dispatch = useDispatch();
 
   const changeProductAmount = operator => {
-    dispatch(changeAmount({ _id: _id, operator: operator }));
+    dispatch(changeAmount({ _id, operator }));
   };
 
   const handleDeleteClick = () => {

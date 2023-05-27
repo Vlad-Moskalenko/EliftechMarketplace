@@ -1,12 +1,14 @@
-import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearCart } from '../../../redux/cart/cartSlice';
-import { selectCart } from '../../../redux/cart/selectors';
-import { marketApi } from '../../../services/axiosConfig';
+import { useFormik } from 'formik';
+
+import { clearCart } from 'src/redux/cart/cartSlice';
+import { selectCart } from 'src/redux/cart/selectors';
+import { addOrderDelivery } from 'src/services/fetchOrders';
+import { validationSchema } from './validationSchema';
 
 import s from './OrderDeliveryForm.module.scss';
 
-const initialDeliveryState = {
+const initialValues = {
   email: '',
   address: '',
   name: '',
@@ -14,76 +16,92 @@ const initialDeliveryState = {
 };
 
 export const OrderDeliveryForm = () => {
-  const [deliveryData, setDeliveryData] = useState(initialDeliveryState);
   const dispatch = useDispatch();
   const cart = useSelector(selectCart);
 
-  const handleInputChange = ({ target }) => {
-    setDeliveryData({ ...deliveryData, order: cart, [target.name]: target.value });
-  };
+  const orderDeliveryFormik = useFormik({
+    initialValues,
 
-  const handleOrderSubmit = e => {
-    e.preventDefault();
+    validationSchema,
 
-    marketApi
-      .post('/orders', deliveryData)
-      .then(() => {
-        setDeliveryData(initialDeliveryState);
-        dispatch(clearCart());
-      })
-      .catch(err => {
-        console.log(err.message);
-      });
-  };
+    onSubmit: async (values, actions) => {
+      await addOrderDelivery({ ...values, order: cart });
 
-  const { email, address, name, phone } = deliveryData;
+      actions.resetForm();
+      dispatch(clearCart());
+    },
+  });
+
+  const {
+    values: { email, phone, address, name },
+    isValid,
+    isSubmitting,
+    dirty,
+    errors,
+    touched,
+    handleBlur,
+    handleChange,
+    handleSubmit,
+  } = orderDeliveryFormik;
+
   return (
-    <form onSubmit={handleOrderSubmit} className={s.form}>
+    <form onSubmit={handleSubmit} className={s.form}>
       <label className={s.label}>
         E-mail
         <input
           type="email"
           name="email"
-          onChange={handleInputChange}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          id="email"
           value={email}
           placeholder="E-mail"
           required
         />
+        {errors.email && touched.email && <p>{errors.email}</p>}
       </label>
       <label className={s.label}>
         Address
         <input
           type="text"
           name="address"
-          onChange={handleInputChange}
+          onChange={handleChange}
+          onBlur={handleBlur}
           value={address}
           placeholder="Address"
           required
         />
+        {errors.address && touched.address && <p>{errors.address}</p>}
       </label>
       <label className={s.label}>
-        phone
+        Phone
         <input
           type="number"
           name="phone"
-          onChange={handleInputChange}
+          onChange={handleChange}
+          onBlur={handleBlur}
           value={phone}
           placeholder="phone"
           required
         />
+        {errors.phone && touched.phone && <p>{errors.phone}</p>}
       </label>
       <label className={s.label}>
-        name
+        Name
         <input
           type="text"
           name="name"
-          onChange={handleInputChange}
+          onChange={handleChange}
+          onBlur={handleBlur}
           value={name}
           placeholder="name"
           required
         />
+        {errors.name && touched.name && <p>{errors.name}</p>}
       </label>
-      <button type="submit">Submit</button>
+      <button type="submit" disabled={!isValid || !dirty || isSubmitting}>
+        Submit
+      </button>
     </form>
   );
 };
