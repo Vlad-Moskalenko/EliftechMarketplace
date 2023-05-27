@@ -25,10 +25,12 @@ export const OrderDeliveryForm = () => {
     validationSchema,
 
     onSubmit: async (values, actions) => {
-      await addOrderDelivery({ ...values, order: cart });
+      if (cart.length > 0) {
+        await addOrderDelivery({ ...values, order: cart });
 
-      actions.resetForm();
-      dispatch(clearCart());
+        actions.resetForm();
+        dispatch(clearCart());
+      }
     },
   });
 
@@ -47,7 +49,6 @@ export const OrderDeliveryForm = () => {
   return (
     <form onSubmit={handleSubmit} className={s.form}>
       <label className={s.label}>
-        E-mail
         <input
           type="email"
           name="email"
@@ -56,12 +57,12 @@ export const OrderDeliveryForm = () => {
           id="email"
           value={email}
           placeholder="E-mail"
+          className={s.input}
           required
         />
-        {errors.email && touched.email && <p>{errors.email}</p>}
+        {errors.email && touched.email && <span className={s.errorMsg}>{errors.email}</span>}
       </label>
       <label className={s.label}>
-        Address
         <input
           type="text"
           name="address"
@@ -69,38 +70,43 @@ export const OrderDeliveryForm = () => {
           onBlur={handleBlur}
           value={address}
           placeholder="Address"
+          className={s.input}
           required
         />
-        {errors.address && touched.address && <p>{errors.address}</p>}
+        {errors.address && touched.address && <span className={s.errorMsg}>{errors.address}</span>}
       </label>
       <label className={s.label}>
-        Phone
         <input
-          type="number"
+          type="text"
           name="phone"
           onChange={handleChange}
           onBlur={handleBlur}
           value={phone}
-          placeholder="phone"
+          placeholder="Phone number"
+          className={s.input}
           required
         />
-        {errors.phone && touched.phone && <p>{errors.phone}</p>}
+        {errors.phone && touched.phone && <span className={s.errorMsg}>{errors.phone}</span>}
       </label>
       <label className={s.label}>
-        Name
         <input
           type="text"
           name="name"
           onChange={handleChange}
           onBlur={handleBlur}
           value={name}
-          placeholder="name"
+          placeholder="Name"
+          className={s.input}
           required
         />
-        {errors.name && touched.name && <p>{errors.name}</p>}
+        {errors.name && touched.name && <span className={s.errorMsg}>{errors.name}</span>}
       </label>
-      <button type="submit" disabled={!isValid || !dirty || isSubmitting}>
-        Submit
+      <button
+        className={s.buyBtn}
+        type="submit"
+        disabled={!isValid || !dirty || isSubmitting || !cart.length}
+      >
+        Buy
       </button>
     </form>
   );

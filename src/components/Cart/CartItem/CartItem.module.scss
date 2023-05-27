@@ -1,0 +1,82 @@
+.card {
+  position: relative;
+  width: 600px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 30px;
+
+  text-align: center;
+}
+
+.imgWrapper {
+  position: relative;
+}
+
+.marketTitle {
+  position: absolute;
+  display: block;
+  top: 20px;
+  right: 20px;
+
+  padding: 0 10px;
+
+  font-size: 20px;
+  font-weight: 700;
+  border-radius: 20px;
+
+  background-color: yellow;
+}
+
+.deleteBtn {
+    position: absolute;
+    right: 10px;
+    top: 30px;
+    width: 30px;
+    height: 30px;
+    opacity: 0.3;
+    border-radius: 50%;
+    border: none;
+
+  &:hover {
+    opacity: 1;
+    background-color: transparent;
+  }
+  &:before,
+  &:after {
+    position: absolute;
+    content: ' ';
+    top: 0;
+    height: 30px;
+    width: 2px;
+    background-color: #333;
+  }
+
+  &:before {
+    transform: rotate(45deg);
+  }
+
+  &:after {
+    transform: rotate(-45deg);
+  }
+}
+
+.amount {
+  display: inline-block;
+  width: 50px;
+}
+
+.title {
+  margin: 0;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.price {
+  padding: 0 5px;
+  color: #fff;
+  background-color: rgb(234, 25, 25);
+  border-radius: 20px;
+}

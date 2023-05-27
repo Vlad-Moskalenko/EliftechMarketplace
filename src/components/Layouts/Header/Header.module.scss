@@ -7,6 +7,13 @@
   right: 0;
   z-index: 10;
 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 20px;
+  font-weight: 600;
+
   background-color: #fff;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
@@ -14,6 +21,17 @@
 .navList {
   display: flex;
   gap: 30px;
+}
 
-  font-size: 20px;
+.cart {
+  position: absolute;
+  top: -5px;
+
+  padding: 0 5px;
+
+  font-size: 12px;
+
+  color: red;
+  background-color: yellow;
+  border-radius: 50%;
 }

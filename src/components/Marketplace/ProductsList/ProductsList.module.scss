@@ -2,8 +2,9 @@
   margin: 0  auto;
   padding: 15px;
 
-  max-width: 1220px;
-  min-height: calc(100vh - 100px);
+  width: 100%;
+  height: calc(100vh - 100px);
+  overflow-y: scroll;
 
   display: flex;
   flex-wrap: wrap;
